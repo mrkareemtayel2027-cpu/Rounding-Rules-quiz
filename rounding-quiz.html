@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Quiz Time | Grade 4 | Rounding Rules</title>
+<style>
+:root{--blue:#1479c9;--light:#eaf6ff;--ink:#17324d;--muted:#60758a;--green:#22a06b;--red:#d9534f;--line:#d9e8f5}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:linear-gradient(135deg,#eef8ff,#fff);color:var(--ink)}
+.wrap{max-width:800px;margin:auto;padding:15px}.card{background:#fff;border-radius:22px;padding:24px;box-shadow:0 10px 35px #16466b18;margin-top:18px}
+.brand{text-align:center;font-weight:900;color:var(--blue)}h1{text-align:center;color:var(--blue);margin:9px 0}.sub{text-align:center;color:var(--muted)}
+.meta,.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:20px 0}.meta div,.stat{background:var(--light);border-radius:13px;padding:12px;text-align:center;font-weight:700}
+.instructions{background:#f7fbfe;border-radius:14px;padding:15px;line-height:1.7}label.title{font-weight:700;display:block;margin:12px 0 7px}
+input[type=text]{width:100%;padding:14px;border:2px solid var(--line);border-radius:12px;font-size:16px}
+.btn{border:0;background:var(--blue);color:#fff;padding:13px 22px;border-radius:11px;font-size:16px;font-weight:800;cursor:pointer;text-decoration:none}.secondary{background:#eef5fa;color:var(--ink)}
+.top{display:flex;justify-content:space-between;gap:15px}.timer{color:var(--red);font-weight:900;font-size:18px}.bar{height:9px;background:#e9f1f6;border-radius:20px;overflow:hidden;margin:12px 0}.bar span{display:block;height:100%;background:var(--blue)}
+.qnum{color:var(--muted);font-weight:700}.q{font-size:24px;font-weight:800;line-height:1.4;margin:12px 0 18px}.opt{display:block;padding:15px;border:2px solid var(--line);border-radius:13px;margin:10px 0;cursor:pointer}.opt input{transform:scale(1.15);margin-right:8px}.nav{text-align:right;margin-top:20px}
+.score{text-align:center;font-size:30px}.review{border-top:1px solid var(--line);padding:16px 0}.answer{background:#f7fbfe;border-radius:11px;padding:10px;margin-top:8px}.correct{color:var(--green);font-weight:800}.wrong{color:var(--red);font-weight:800}.small{color:var(--muted);font-size:14px}
+.hidden{display:none}@media(max-width:600px){.meta,.stats{grid-template-columns:1fr}.q{font-size:21px}.card{padding:18px}.top{align-items:flex-start}}
+</style>
+</head>
+<body><div class="wrap">
+
+<section class="card" id="start">
+<div class="brand">The RooTs in mathematics</div><h1>Quiz Time</h1><p class="sub"><b>Grade 4</b> • Rounding Rules</p>
+<div class="meta"><div>10 Questions</div><div>15 Minutes</div><div>Multiple Choice</div></div>
+<div class="instructions"><b>Instructions</b><br>• Choose one answer for each question.<br>• You cannot go back after moving to the next question.<br>• The quiz finishes automatically when time is over.<br>• Your score and answer review appear immediately.</div>
+<label class="title" for="name">Student Name</label><input id="name" type="text" placeholder="Enter your name">
+<br><br><div style="text-align:center"><button class="btn" onclick="start()">Start Quiz</button></div>
+</section>
+
+<section class="card hidden" id="quiz">
+<div class="top"><div class="brand">The RooTs in mathematics</div><div class="timer">⏱ <span id="time">15:00</span></div></div>
+<div class="bar"><span id="bar" style="width:10%"></span></div><div id="num" class="qnum"></div><div id="content"></div>
+<div class="nav"><button class="btn" onclick="next()" id="next">Next</button></div>
+</section>
+
+<section class="card hidden" id="result"></section>
+</div>
+
+<script>
+const qs=[
+["Round 47 to the nearest ten.",["40","50","47","60"],"50","Look at the ones digit."],
+["Round 326 to the nearest hundred.",["300","400","320","330"],"300","For the nearest hundred, check the tens digit."],
+["Round 6.74 to the nearest whole number.",["6","7","6.7","8"],"7","For the nearest whole number, inspect the tenths digit."],
+["Round 1,249 to the nearest hundred.",["1,200","1,300","1,250","1,000"],"1,200","Find the hundreds digit, then look at the tens digit."],
+["Round 8.36 to the nearest tenth.",["8.3","8.4","8","8.5"],"8.4","When rounding to the nearest tenth, look at the hundredths digit."],
+["Round 5,650 to the nearest thousand.",["5,000","6,000","5,700","7,000"],"6,000","For the nearest thousand, check the hundreds digit."],
+["Which number rounds to 70 when rounded to the nearest ten?",["65","67","74","76"],"65","Find a number with a ones digit of 5 and apply the usual rounding rule."],
+["Round 93.48 to the nearest whole number.",["93","94","93.5","90"],"93","Check the tenths digit because you are rounding to a whole number."],
+["Round 4,785 to the nearest ten.",["4,780","4,790","4,800","4,700"],"4,790","For the nearest ten, look at the ones digit."],
+["Which statement describes the rounding rule correctly?",["If the digit to the right is 5 or more, increase the rounding digit by 1.","If the digit to the right is 5 or more, decrease the rounding digit by 1.","Always increase the rounding digit.","Always keep the rounding digit the same."],"If the digit to the right is 5 or more, increase the rounding digit by 1.","Focus on what happens when the digit immediately to the right is 5 or greater."]
+];
+let i=0,ans=[],secs=900,timer=null,done=false;
+function start(){let n=document.getElementById("name").value.trim();if(!n){alert("Please enter your name.");return}document.getElementById("start").classList.add("hidden");document.getElementById("quiz").classList.remove("hidden");show();timer=setInterval(()=>{secs--;clock();if(secs<=0)finish()},1000)}
+function clock(){document.getElementById("time").textContent=String(Math.floor(secs/60)).padStart(2,"0")+":"+String(secs%60).padStart(2,"0")}
+function show(){let q=qs[i];document.getElementById("num").textContent=`Question ${i+1} of ${qs.length}`;document.getElementById("bar").style.width=((i+1)/qs.length*100)+"%";document.getElementById("content").innerHTML='<div class="q">'+esc(q[0])+'</div>'+q[1].map((x,n)=>`<label class="opt"><input type="radio" name="a" value="${esc(x)}"> ${String.fromCharCode(65+n)}. ${esc(x)}</label>`).join("");document.getElementById("next").textContent=i===qs.length-1?"Finish":"Next"}
+function next(){let s=document.querySelector('input[name="a"]:checked');if(!s){alert("Please choose an answer.");return}ans[i]=s.value;i++;if(i>=qs.length)finish();else show()}
+function finish(){if(done)return;done=true;clearInterval(timer);let score=qs.reduce((v,q,n)=>v+(ans[n]===q[2]?1:0),0),pct=Math.round(score/10*100),used=900-secs,name=document.getElementById("name").value.trim();document.getElementById("quiz").classList.add("hidden");let r=document.getElementById("result");r.classList.remove("hidden");let h='<div class="brand">The RooTs in mathematics</div><h1>Well Done, '+esc(name)+'!</h1><div class="score"><b>'+score+' / 10</b><br>'+pct+'%</div><div class="stats"><div class="stat"><b>'+score+'</b><br>Correct</div><div class="stat"><b>'+(10-score)+'</b><br>Wrong</div><div class="stat"><b>'+String(Math.floor(used/60)).padStart(2,"0")+':'+String(used%60).padStart(2,"0")+'</b><br>Time Used</div></div><h2>Answer Review</h2>';qs.forEach((q,n)=>{let a=ans[n]??"Not answered",ok=a===q[2];h+='<div class="review"><b>'+(n+1)+'. '+esc(q[0])+'</b><div class="'+(ok?"correct":"wrong")+'">'+(ok?"✓ Correct":"✗ Incorrect")+'</div><div class="answer"><b>Your answer:</b> '+esc(a)+'<br><b>Correct answer:</b> '+esc(q[2])+'</div><p class="small"><b>Hint:</b> '+esc(q[3])+'</p></div>'});h+='<div style="text-align:center"><a class="btn secondary" href="index.html">Back to Quizzes</a> <button class="btn" onclick="location.reload()">Retake Quiz</button></div>';r.innerHTML=h}
+function esc(s){return String(s).replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll('"',"&quot;")}
+</script></body></html>

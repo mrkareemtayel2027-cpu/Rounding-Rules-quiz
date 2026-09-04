@@ -1,197 +1,48 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Quiz Time | Grade 4 | Rounding Rules</title>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The RooTs in mathematics | Online Quizzes</title>
 <style>
-:root{--blue:#1479c9;--blue2:#eaf6ff;--ink:#17324d;--muted:#60758a;--green:#22a06b;--red:#d9534f;--line:#d9e8f5}
-*{box-sizing:border-box}
-body{margin:0;font-family:Arial,sans-serif;background:linear-gradient(135deg,#eef8ff,#f9fcff);color:var(--ink)}
-.wrap{max-width:780px;margin:auto;padding:18px}
-.card{background:#fff;border-radius:22px;padding:25px;box-shadow:0 10px 35px #16466b18;margin-top:18px}
-.brand{text-align:center;font-weight:800;color:var(--blue);font-size:18px;letter-spacing:.2px}
-h1{color:var(--blue);text-align:center;margin:10px 0 6px;font-size:34px}
-h2{margin-top:0;color:var(--ink)}
-.sub{text-align:center;color:var(--muted);line-height:1.6}
-.meta{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:22px 0}
-.meta div{background:var(--blue2);border-radius:14px;padding:12px;text-align:center;font-weight:700}
-label.title{font-weight:700;display:block;margin-bottom:7px}
-input[type=text]{width:100%;padding:14px;border:2px solid var(--line);border-radius:12px;font-size:16px;outline:none}
-input[type=text]:focus{border-color:var(--blue)}
-.btn{background:var(--blue);color:#fff;border:0;padding:14px 24px;border-radius:12px;font-size:17px;font-weight:700;cursor:pointer}
-.btn.secondary{background:#eef5fa;color:var(--ink)}
-.btn.danger{background:var(--red)}
-.center{text-align:center}
-.instructions{background:#f7fbfe;border-radius:14px;padding:15px;line-height:1.7}
-.topbar{display:flex;justify-content:space-between;align-items:center;gap:15px}
-.timer{font-weight:800;color:var(--red);font-size:18px;white-space:nowrap}
-.progressline{height:9px;background:#e9f1f6;border-radius:20px;overflow:hidden;margin:12px 0 18px}
-.progressline span{display:block;height:100%;background:var(--blue);transition:width .2s}
-.qnum{color:var(--muted);font-weight:700;margin-bottom:8px}
-.q{font-size:24px;font-weight:800;line-height:1.4;margin:10px 0 18px}
-.opt{display:block;padding:15px;margin:11px 0;border:2px solid var(--line);border-radius:13px;cursor:pointer;line-height:1.4;transition:.15s}
-.opt:hover{border-color:#9fcbea;background:#f7fcff}
-.opt input{margin-right:9px;transform:scale(1.15)}
-.nav{display:flex;justify-content:flex-end;margin-top:20px}
-.score{font-size:28px;text-align:center;margin:10px 0}
-.badge{display:inline-block;padding:7px 13px;border-radius:20px;background:var(--blue2);color:var(--blue);font-weight:800}
-.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:20px 0}
-.stat{border:1px solid var(--line);border-radius:14px;padding:13px;text-align:center}
-.stat b{display:block;font-size:22px;margin-bottom:4px}
-.review{border-top:1px solid var(--line);padding:18px 0}
-.review:last-child{border-bottom:0}
-.review .question{font-weight:800;line-height:1.45}
-.correct{color:var(--green);font-weight:700}
-.wrong{color:var(--red);font-weight:700}
-.answerbox{background:#f7fbfe;border-radius:12px;padding:11px;margin-top:9px}
-.small{font-size:14px;color:var(--muted)}
-.hidden{display:none}
-@media(max-width:600px){
- .wrap{padding:10px}.card{padding:18px;border-radius:18px}
- h1{font-size:29px}.meta,.stats{grid-template-columns:1fr}
- .topbar{align-items:flex-start}.q{font-size:21px}
-}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:linear-gradient(135deg,#eef8ff,#fff);color:#17324d}
+.wrap{max-width:900px;margin:auto;padding:20px}.hero,.card{background:#fff;border-radius:24px;box-shadow:0 12px 35px #16466b18}.hero{padding:30px;text-align:center;margin-bottom:20px}
+.brand{font-weight:900;color:#1479c9;font-size:20px}.hero h1{font-size:38px;margin:10px 0 4px;color:#1479c9}.hero p{color:#60758a;font-size:17px}
+.search{width:100%;padding:14px;border:2px solid #d9e8f5;border-radius:13px;font-size:16px;margin:12px 0 20px}
+.section{margin:24px 0 10px;font-size:24px}.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:15px}
+.card{padding:20px}.tag{display:inline-block;background:#eaf6ff;color:#1479c9;padding:6px 10px;border-radius:20px;font-weight:700;font-size:13px}
+.card h3{margin:12px 0 6px;font-size:21px}.card p{color:#60758a;margin:7px 0 16px}.btn{display:inline-block;text-decoration:none;background:#1479c9;color:#fff;padding:12px 18px;border-radius:11px;font-weight:800}
+footer{text-align:center;color:#60758a;padding:28px}
+@media(max-width:650px){.grid{grid-template-columns:1fr}.hero h1{font-size:30px}.wrap{padding:12px}}
 </style>
 </head>
 <body>
 <div class="wrap">
-
-<section class="card" id="start">
-  <div class="brand">The RooTs in mathematics</div>
-  <h1>Quiz Time</h1>
-  <p class="sub"><b>Grade 4</b> • Rounding Rules</p>
-  <div class="meta">
-    <div>10 Questions</div><div>15 Minutes</div><div>Multiple Choice</div>
-  </div>
-
-  <div class="instructions">
-    <b>Instructions</b><br>
-    • Choose one answer for each question.<br>
-    • You cannot go back after moving to the next question.<br>
-    • The quiz will finish automatically when the time is over.<br>
-    • Your score and answer review will appear immediately after finishing.
-  </div>
-
-  <br>
-  <label class="title" for="name">Student Name</label>
-  <input id="name" type="text" placeholder="Enter your name" autocomplete="name">
-  <br><br>
-  <div class="center"><button class="btn" onclick="startQuiz()">Start Quiz</button></div>
+<section class="hero">
+<div class="brand">The RooTs in mathematics</div>
+<h1>Online Tasks & Quizzes</h1>
+<p>Choose your grade and start your quiz.</p>
+<input class="search" id="search" placeholder="Search quizzes..." oninput="filterCards()">
 </section>
 
-<section class="card hidden" id="quiz">
-  <div class="topbar">
-    <div class="brand">The RooTs in mathematics</div>
-    <div class="timer">⏱ <span id="time">15:00</span></div>
-  </div>
-  <div class="progressline"><span id="progressbar" style="width:10%"></span></div>
-  <div id="progress" class="qnum"></div>
-  <div id="content"></div>
-  <div class="nav"><button class="btn" id="next" onclick="nextQ()">Next</button></div>
-</section>
-
-<section class="card hidden" id="result"></section>
-
+<h2 class="section">Grade 4</h2>
+<div class="grid" id="quizGrid">
+<article class="card quiz" data-search="grade 4 rounding rules rounding">
+<span class="tag">Grade 4</span>
+<h3>Rounding Rules</h3>
+<p>10 Questions • 15 Minutes • Multiple Choice</p>
+<a class="btn" href="rounding-quiz.html">Start Quiz</a>
+</article>
 </div>
 
+<h2 class="section">Coming Soon</h2>
+<div class="grid">
+<article class="card"><span class="tag">Grade 4</span><h3>Fractions</h3><p>Quiz will be added soon.</p></article>
+<article class="card"><span class="tag">Grade 4</span><h3>Decimals</h3><p>Quiz will be added soon.</p></article>
+</div>
+<footer>Prepared by Mr. Kareem Tayel • The RooTs in mathematics</footer>
+</div>
 <script>
-const qs=[
-["Round 47 to the nearest ten.",["40","50","47","60"],"50","Look at the ones digit."],
-["Round 326 to the nearest hundred.",["300","400","320","330"],"300","For the nearest hundred, check the tens digit."],
-["Round 6.74 to the nearest whole number.",["6","7","6.7","8"],"7","For the nearest whole number, inspect the tenths digit."],
-["Round 1,249 to the nearest hundred.",["1,200","1,300","1,250","1,000"],"1,200","Find the hundreds digit, then look at the tens digit."],
-["Round 8.36 to the nearest tenth.",["8.3","8.4","8","8.5"],"8.4","When rounding to the nearest tenth, look at the hundredths digit."],
-["Round 5,650 to the nearest thousand.",["5,000","6,000","5,700","7,000"],"6,000","For the nearest thousand, check the hundreds digit."],
-["Which number rounds to 70 when rounded to the nearest ten?",["64","65","74","76"],"65","Find the number whose ones digit is 5 and apply the usual rounding rule."],
-["Round 93.48 to the nearest whole number.",["93","94","93.5","90"],"93","Check the tenths digit because you are rounding to a whole number."],
-["Round 4,785 to the nearest ten.",["4,780","4,790","4,800","4,700"],"4,790","For the nearest ten, look at the ones digit."],
-["Which statement describes the rounding rule correctly?",["If the digit to the right is 5 or more, increase the rounding digit by 1.","If the digit to the right is 5 or more, decrease the rounding digit by 1.","Always increase the rounding digit.","Always keep the rounding digit the same."],"If the digit to the right is 5 or more, increase the rounding digit by 1.","Focus on what happens when the digit immediately to the right is 5 or greater."]
-];
-
-let i=0, answers=[], secs=900, timer=null, finished=false;
-
-function startQuiz(){
-  const name=document.getElementById("name").value.trim();
-  if(!name){alert("Please enter your name.");return;}
-  document.getElementById("start").classList.add("hidden");
-  document.getElementById("quiz").classList.remove("hidden");
-  showQ();
-  timer=setInterval(()=>{
-    if(finished)return;
-    secs--;
-    updateTime();
-    if(secs<=0) finish(true);
-  },1000);
-}
-
-function updateTime(){
-  const m=String(Math.floor(secs/60)).padStart(2,"0");
-  const s=String(secs%60).padStart(2,"0");
-  document.getElementById("time").textContent=m+":"+s;
-}
-
-function showQ(){
-  const q=qs[i];
-  document.getElementById("progress").textContent="Question "+(i+1)+" of "+qs.length;
-  document.getElementById("progressbar").style.width=((i+1)/qs.length*100)+"%";
-  document.getElementById("content").innerHTML=
-    '<div class="q">'+q[0]+'</div>'+
-    q[1].map((x,n)=>'<label class="opt"><input type="radio" name="a" value="'+escapeAttr(x)+'"> '+String.fromCharCode(65+n)+'. '+x+'</label>').join("");
-  document.getElementById("next").textContent=i===qs.length-1?"Finish":"Next";
-}
-
-function escapeAttr(s){return s.replaceAll("&","&amp;").replaceAll('"',"&quot;").replaceAll("<","&lt;").replaceAll(">","&gt;");}
-
-function nextQ(){
-  const selected=document.querySelector('input[name="a"]:checked');
-  if(!selected){alert("Please choose an answer.");return;}
-  answers[i]=selected.value;
-  i++;
-  if(i>=qs.length) finish(false);
-  else showQ();
-}
-
-function finish(timeUp){
-  if(finished)return;
-  finished=true;
-  clearInterval(timer);
-  let score=0;
-  qs.forEach((q,n)=>{if(answers[n]===q[2])score++;});
-  const pct=Math.round(score/qs.length*100);
-  const used=900-secs;
-  const um=String(Math.floor(used/60)).padStart(2,"0");
-  const us=String(used%60).padStart(2,"0");
-  const name=document.getElementById("name").value.trim();
-
-  document.getElementById("quiz").classList.add("hidden");
-  const r=document.getElementById("result");
-  r.classList.remove("hidden");
-
-  let html='<div class="brand">The RooTs in mathematics</div>'+
-    '<h1>'+(timeUp?"Time is up!":"Well Done, "+escapeHtml(name)+"!")+'</h1>'+
-    '<div class="score"><span class="badge">'+score+' / '+qs.length+'</span><br><b>'+pct+'%</b></div>'+
-    '<div class="stats"><div class="stat"><b>'+score+'</b>Correct</div><div class="stat"><b>'+(qs.length-score)+'</b>Wrong</div><div class="stat"><b>'+um+':'+us+'</b>Time Used</div></div>'+
-    '<h2>Answer Review</h2>';
-
-  qs.forEach((q,n)=>{
-    const ans=answers[n] ?? "Not answered";
-    const ok=ans===q[2];
-    html+='<div class="review">'+
-      '<div class="question">'+(n+1)+'. '+q[0]+'</div>'+
-      '<div class="'+(ok?"correct":"wrong")+'">'+(ok?"✓ Correct":"✗ Incorrect")+'</div>'+
-      '<div class="answerbox"><b>Your answer:</b> '+escapeHtml(ans)+'<br><b>Correct answer:</b> '+escapeHtml(q[2])+'</div>'+
-      '<p class="small"><b>Hint:</b> '+escapeHtml(q[3])+'</p>'+
-      '</div>';
-  });
-
-  html+='<div class="center"><button class="btn" onclick="location.reload()">Retake Quiz</button></div>';
-  r.innerHTML=html;
-}
-
-function escapeHtml(s){
-  return String(s).replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll('"',"&quot;");
-}
+function filterCards(){let s=document.getElementById("search").value.toLowerCase();document.querySelectorAll(".quiz").forEach(c=>c.style.display=c.dataset.search.includes(s)?"block":"none")}
 </script>
 </body>
 </html>
